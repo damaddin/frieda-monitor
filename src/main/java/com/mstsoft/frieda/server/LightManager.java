@@ -34,6 +34,7 @@ public class LightManager {
             SnakeAnimation.class,
             SlotMachineAnimation.class,
             CircleAnimation.class,
+            ShapeAnimation.class,
             ColumnsCycleAnimation.class
     };
 

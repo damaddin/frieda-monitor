@@ -21,7 +21,7 @@ public class MappedLEDPhidget {
     private int[][] matrix;
     private LEDPhidget ledPhidget;
     private BufferedImage deviceImage;
-    private Graphics graphics;
+    private Graphics2D graphics;
 
     public MappedLEDPhidget(
             LEDPhidget ledPhidget, int[] map
@@ -40,7 +40,7 @@ public class MappedLEDPhidget {
             }
         }
         this.deviceImage = new BufferedImage(COLUMNS, ROWS, BufferedImage.TYPE_INT_ARGB);
-        this.graphics = deviceImage.getGraphics();
+        this.graphics = this.deviceImage.createGraphics();
     }
 
 
@@ -110,7 +110,7 @@ public class MappedLEDPhidget {
         setBrightness(x, y, alpha);
     }
 
-    public Graphics getGraphics() {
+    public Graphics2D getGraphics() {
         return graphics;
     }
 }
