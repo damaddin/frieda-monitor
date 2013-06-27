@@ -32,7 +32,9 @@ public class LightManager {
             IdentifyAnimation.class,
             KnightRiderAnimation.class,
             SnakeAnimation.class,
-            SlotMachineAnimation.class
+            SlotMachineAnimation.class,
+            CircleAnimation.class,
+            ColumnsCycleAnimation.class
     };
 
     private LEDPhidget led;
