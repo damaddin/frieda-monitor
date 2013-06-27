@@ -1,0 +1,12 @@
+.settings/
+.metadata/
+*.war
+*.class
+lib/*
+*.log
+*.iml
+.classpath
+.project
+.idea
+.idea/*
+target/*
