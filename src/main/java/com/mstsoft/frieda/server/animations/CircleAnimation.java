@@ -24,12 +24,11 @@ public class CircleAnimation implements LightAnimation {
                 resizeStep(ledPhidget, iteration, wink*10);
             }
         }
-        ledPhidget.update();
         ledPhidget.clear();
     }
 
     private void resizeStep(MappedLEDPhidget ledPhidget, int iteration, int speed) {
-        ledPhidget.clear();
+        ledPhidget.fade(25);
         ledPhidget.getGraphics().drawOval(0, 5-iteration, 5, iteration*2);
         ledPhidget.update();
         try {

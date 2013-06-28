@@ -15,7 +15,6 @@ public class ColumnsCycleAnimation implements LightAnimation {
 
     @Override
     public void run(MappedLEDPhidget ledPhidget) {
-        ledPhidget.clear();
         for (int iterations = 0; iterations < 4; iterations++) {
             for (int column = 0; column < MappedLEDPhidget.COLUMNS; column++) {
                 int previousColumn = column - 1;
@@ -24,7 +23,7 @@ public class ColumnsCycleAnimation implements LightAnimation {
                 } else if (previousColumn == MappedLEDPhidget.COLUMNS) {
                     previousColumn = 0;
                 }
-                ledPhidget.clear();
+                ledPhidget.fade();
                 ledPhidget.getGraphics().drawLine(column, 0, column, MappedLEDPhidget.ROWS - 1);
                 ledPhidget.update();
                 try {
@@ -33,6 +32,9 @@ public class ColumnsCycleAnimation implements LightAnimation {
                     throw new RuntimeException(e);
                 }
             }
+        }
+        for (int iterations = 0; iterations < 4; iterations++) {
+            ledPhidget.fade();
         }
         ledPhidget.clear();
     }
