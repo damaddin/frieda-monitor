@@ -1,9 +1,10 @@
 package com.mstsoft.frieda.server;
 
 import com.mstsoft.frieda.server.animations.*;
-import com.mstsoft.frieda.server.lightstrategies.*;
-import com.mstsoft.frieda.server.lightstrategies.FadeStrategy;
 import com.mstsoft.frieda.server.lightstrategies.BlinkStrategy;
+import com.mstsoft.frieda.server.lightstrategies.FadeStrategy;
+import com.mstsoft.frieda.server.lightstrategies.OffStrategy;
+import com.mstsoft.frieda.server.lightstrategies.OnStrategy;
 import com.phidgets.LEDPhidget;
 import com.phidgets.PhidgetException;
 import com.phidgets.event.*;
@@ -26,7 +27,7 @@ public class LightManager {
             BlinkStrategy.class
     };
 
-    private static Class[] animationClasses = new Class[] {
+    private static Class[] animationClasses = new Class[]{
             AlertTopAnimation.class,
             HarlemShakeAnimation.class,
             IdentifyAnimation.class,
@@ -35,6 +36,7 @@ public class LightManager {
             SlotMachineAnimation.class,
             CircleAnimation.class,
             ShapeAnimation.class,
+            TextAnimation.class,
             ColumnsCycleAnimation.class
     };
 
@@ -83,7 +85,7 @@ public class LightManager {
                 while (true) {
                     try {
                         if (currentAnimation != null) {
-                            LightAnimation local  = currentAnimation;
+                            LightAnimation local = currentAnimation;
                             currentAnimation = null;
                             local.run(ledMapper);
                             for (int i = 0; i < 64; i++) {
@@ -106,7 +108,7 @@ public class LightManager {
      */
     private void tick() throws PhidgetException {
 
-        for(LightStrategy strategy : strategies) {
+        for (LightStrategy strategy : strategies) {
             strategy.tick();
         }
 
@@ -171,7 +173,7 @@ public class LightManager {
     }
 
     public void setStrategy(int light, String name) {
-       currentStrategies[light] = lookupStrategy(name);
+        currentStrategies[light] = lookupStrategy(name);
     }
 
     public void setAnimation(String name) {

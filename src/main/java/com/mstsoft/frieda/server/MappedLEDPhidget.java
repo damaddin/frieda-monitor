@@ -5,6 +5,7 @@ import com.phidgets.PhidgetException;
 
 import java.awt.*;
 import java.awt.image.BufferedImage;
+import java.text.DecimalFormat;
 
 /**
  * Allows for mapping where its physically not possible to connect all leds in series.
@@ -17,6 +18,7 @@ public class MappedLEDPhidget {
 
     public final static int ROWS = 10;
     public final static int COLUMNS = 6;
+    private final static DecimalFormat alphaFormat = new DecimalFormat("000");
     private int[] map;
     private int[][] matrix;
     private LEDPhidget ledPhidget;
@@ -85,29 +87,41 @@ public class MappedLEDPhidget {
     }
 
     public void clear() {
-        for (int x = 0; x < COLUMNS; x++) {
-            for (int y = 0; y < ROWS; y++) {
+        System.out.println("╔═══════╣ CLEAR ╠═══════╗");
+        for (int y = 0; y < ROWS; y++) {
+            for (int x = 0; x < COLUMNS; x++) {
                 deviceImage.setRGB(x, y, 0x00000000);
                 update(x, y);
             }
+            System.out.println();
         }
+        System.out.println("╚══════════════════════╝");
     }
 
     public void update() {
-        for (int x = 0; x < COLUMNS; x++) {
-            for (int y = 0; y < ROWS; y++) {
+        System.out.println("╔═══════╣ WRITE ╠═══════╗");
+        for (int y = 0; y < ROWS; y++) {
+            for (int x = 0; x < COLUMNS; x++) {
                 update(x, y);
             }
+            System.out.println();
         }
+        System.out.println("╚══════════════════════╝");
     }
 
     public void update(int x, int y) {
+        int alpha = getAlpha(x, y);
+        setBrightness(x, y, alpha);
+        System.out.print('[' + (alpha == 0 ? "   " : alphaFormat.format(alpha)) + ']');
+    }
+
+    private int getAlpha(int x, int y) {
         int rgb = this.deviceImage.getRGB(x, y);
         int alpha = (rgb >> 24) & 0xff;
         if (alpha > 100) {
             alpha = 100;
         }
-        setBrightness(x, y, alpha);
+        return alpha;
     }
 
     public Graphics2D getGraphics() {
