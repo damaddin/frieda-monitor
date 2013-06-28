@@ -20,7 +20,7 @@ public class TextAnimation implements LightAnimation {
         // TODO Coonect to REST API
         String text = "HOLIDAY - INSIDER";
         for (int i = 4; i > -CHAR_WIDTH * text.length(); i--) {
-            ledPhidget.clear();
+            ledPhidget.fade(50);
             ledPhidget.getGraphics().drawString(text, i, 10);
             ledPhidget.update();
             try {

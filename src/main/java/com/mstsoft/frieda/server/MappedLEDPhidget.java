@@ -115,6 +115,27 @@ public class MappedLEDPhidget {
         System.out.print('[' + (alpha == 0 ? "   " : alphaFormat.format(alpha)) + ']');
     }
 
+    public void fade(int fadeStep) {
+        System.out.println("╔═══════╣F A D E╠═══════╗");
+        for (int y = 0; y < ROWS; y++) {
+            for (int x = 0; x < COLUMNS; x++) {
+                Integer alpha = getAlpha(x, y);
+                alpha -= fadeStep;
+                if (alpha < 0) {
+                    alpha = 0;
+                }
+                deviceImage.setRGB(x, y, alpha << 24);
+                update(x, y);
+            }
+            System.out.println();
+        }
+        System.out.println("╚══════════════════════╝");
+    }
+
+    public void fade() {
+        fade(20);
+    }
+
     private int getAlpha(int x, int y) {
         int rgb = this.deviceImage.getRGB(x, y);
         int alpha = (rgb >> 24) & 0xff;
