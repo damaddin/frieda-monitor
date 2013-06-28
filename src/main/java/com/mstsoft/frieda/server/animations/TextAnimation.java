@@ -18,8 +18,8 @@ public class TextAnimation implements LightAnimation {
     @Override
     public void run(MappedLEDPhidget ledPhidget) {
         // TODO Coonect to REST API
-        String text = "HOLIDAYINSIDER";
-        for (int i = CHAR_WIDTH / 2; i > -CHAR_WIDTH * text.length() + CHAR_WIDTH * 2; i--) {
+        String text = "HOLIDAY - INSIDER";
+        for (int i = 4; i > -CHAR_WIDTH * text.length(); i--) {
             ledPhidget.clear();
             ledPhidget.getGraphics().drawString(text, i, 10);
             ledPhidget.update();
