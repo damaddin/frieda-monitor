@@ -11,4 +11,4 @@ lib/*
 .idea/*
 target/*
 out/*
-META-INF/*
+**/META-INF
