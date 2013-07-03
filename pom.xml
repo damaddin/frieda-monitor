@@ -31,6 +31,7 @@
                         <manifest>
                             <mainClass>com.mstsoft.frieda.server.RestletServer</mainClass>
                         </manifest>
+                        <manifestFile>src/main/java/META-INF/MANIFEST.MF</manifestFile>
                     </archive>
                 </configuration>
             </plugin>
