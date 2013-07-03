@@ -1,0 +1,5 @@
+Manifest-Version: 1.0
+Class-Path: org.osgi.core-4.0.0.jar phidget21.jar org.restlet.ext.simp
+ le-2.0.0.jar phidgets-2.1.jar org.restlet-2.0.0.jar simple-4.1.20.jar
+Main-Class: com.mstsoft.frieda.server.RestletServer
+
