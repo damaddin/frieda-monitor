@@ -64,8 +64,12 @@
         <repository>
             <id>HIInternal</id>
             <name>HolidayInsider Internal Repository</name>
-            <url>http://svn:8081/nexus/content/groups/public/</url>
+            <url>http://svn.holidayinsider.com:8081/nexus/content/repositories/hiLibs</url>
         </repository>
+        <snapshotRepository>
+            <id>snapshots</id>
+            <url>http://svn.holidayinsider.com:8081/nexus/content/repositories/snapshots</url>
+        </snapshotRepository>
     </distributionManagement>
 
 </project>
